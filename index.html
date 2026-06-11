@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ Natasha — Electronic · Disco · Music</title>
+  <link rel="icon" type="image/png" href="https://designmywebsitenow.com/images/favicon-merkaba.png">
+  <link rel="apple-touch-icon" href="https://designmywebsitenow.com/images/favicon-merkaba.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600;1,700&family=Jost:wght@200;300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1920&q=80">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --void:       #06040a;
+      --void2:      #0e0a18;
+      --magenta:    #c4006e;
+      --magenta-lt: #e8007e;
+      --gold:       #e8c96a;
+      --cyan:       #00d4f0;
+      --white:      #f0ece6;
+      --border:     rgba(232,201,106,0.12);
+      --gold-dim:   rgba(232,201,106,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--void);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    @media (hover: hover) {
+      body { cursor: none; }
+      .cursor {
+        position: fixed; width: 8px; height: 8px; border-radius: 50%;
+        background: var(--magenta); pointer-events: none; z-index: 99999;
+        transform: translate(-50%,-50%);
+      }
+      .cursor-ring {
+        position: fixed; width: 30px; height: 30px; border-radius: 50%;
+        border: 1px solid rgba(232,201,106,0.45); pointer-events: none; z-index: 99998;
+        transform: translate(-50%,-50%);
+        transition: width .18s, height .18s;
+      }
+    }
+    @media (hover: none) { .cursor, .cursor-ring { display: none; } }
+
+    /* ── A11Y ── */
+    .a11y-btn {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+      width: 2.4rem; height: 2.4rem; border-radius: 50%;
+      background: var(--void2); border: 1px solid var(--border);
+      color: var(--gold); font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(10px); transition: border-color .3s;
+    }
+    .a11y-btn:hover { border-color: var(--gold); }
+    body.a11y-on { background: #fff !important; color: #000 !important; }
+    body.a11y-on .nav { background: #fff !important; }
+    body.a11y-on .hero-overlay,
+    body.a11y-on .hero-overlay-bottom { display: none; }
+    body.a11y-on .hero-bg img { filter: none !important; }
+    body.a11y-on h1, body.a11y-on h2, body.a11y-on h3,
+    body.a11y-on p, body.a11y-on a, body.a11y-on span,
+    body.a11y-on li, body.a11y-on label { color: #000 !important; }
+    body.a11y-on section,
+    body.a11y-on footer { background: #f5f5f5 !important; }
+    body.a11y-on .mix-card,
+    body.a11y-on .booking-form input,
+    body.a11y-on .booking-form select,
+    body.a11y-on .booking-form textarea { background: #e8e8e8 !important; border-color: #000 !important; color: #000 !important; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(6,4,10,0.97); backdrop-filter: blur(16px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+      z-index: 998;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.3rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.6rem clamp(1.5rem,5vw,4rem);
+      transition: background .4s, padding .4s, backdrop-filter .4s;
+    }
+    .nav.scrolled {
+      background: rgba(6,4,10,0.88);
+      backdrop-filter: blur(14px);
+      padding-top: 1rem; padding-bottom: 1rem;
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem; letter-spacing: .12em;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo .slash { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(240,236,230,.6); text-decoration: none; transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: .64rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(232,201,106,.35);
+      padding: .58rem 1.4rem; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .nav-cta:hover { background: var(--gold-dim); border-color: var(--gold); }
+    .nav-toggle {
+      display: none; background: none; border: none; outline: none;
+      -webkit-appearance: none; appearance: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 1px; background: var(--white); transition: .3s; }
+    .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 20%;
+      filter: grayscale(1) contrast(1.12);
+      transform: scale(1.08) translateZ(0);
+      will-change: transform;
+      transition: transform 8s ease;
+    }
+    .hero-bg img.loaded { transform: scale(1.06) translateZ(0); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(
+        ellipse 95% 85% at 50% 38%,
+        rgba(6,4,10,.2)  0%,
+        rgba(6,4,10,.5) 55%,
+        rgba(6,4,10,.92) 100%
+      );
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 38%; z-index: 1;
+      background: linear-gradient(to top, var(--void) 0%, transparent 100%);
+    }
+    /* Particle scatter — mirror ball light fragments */
+    .particles {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden;
+    }
+    .particle {
+      position: absolute; border-radius: 50%;
+      animation: pdrift linear infinite;
+    }
+    @keyframes pdrift {
+      0%   { transform: translate(0,0) scale(1); }
+      25%  { transform: translate(var(--x1),var(--y1)) scale(1.5); }
+      50%  { transform: translate(var(--x2),var(--y2)) scale(.65); }
+      75%  { transform: translate(var(--x3),var(--y3)) scale(1.2); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    .hero-content {
+      position: relative; z-index: 4;
+      text-align: center;
+      padding: clamp(2rem,5vw,4rem);
+      display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
+    }
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.55rem,1vw,.68rem);
+      letter-spacing: .28em; color: var(--gold); opacity: .8;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 600;
+      font-size: clamp(4rem,15vw,16rem);
+      line-height: .88; color: var(--white);
+      animation: chromIn 1.5s ease forwards;
+    }
+    @keyframes chromIn {
+      0%   { text-shadow: -14px 0 var(--magenta), 14px 0 var(--cyan); filter: blur(3px); }
+      60%  { text-shadow: -4px 0 var(--magenta), 4px 0 var(--cyan); filter: blur(.5px); }
+      100% { text-shadow: none; filter: none; }
+    }
+    .hero-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.58rem,1.1vw,.78rem);
+      letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(240,236,230,.45);
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      margin-top: .8rem;
+    }
+    .btn-primary {
+      font-family: 'Jost', sans-serif; font-size: .68rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      background: var(--magenta); color: var(--white);
+      padding: .88rem 2.2rem; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background .3s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--magenta-lt); transform: translateY(-1px); }
+    .btn-ghost {
+      font-family: 'Jost', sans-serif; font-size: .68rem; font-weight: 300;
+      letter-spacing: .18em; text-transform: uppercase;
+      border: 1px solid rgba(232,201,106,.38); color: var(--gold);
+      padding: .88rem 2.2rem; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      transition: border-color .3s, background .3s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 4; display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    }
+    .hero-scroll span {
+      font-family: 'Space Mono', monospace; font-size: .48rem;
+      letter-spacing: .22em; color: rgba(240,236,230,.3); text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 38px;
+      background: linear-gradient(to bottom, rgba(232,201,106,.5), transparent);
+      animation: spulse 2.2s ease-in-out infinite;
+    }
+    @keyframes spulse {
+      0%,100% { opacity: .3; } 50% { opacity: 1; }
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-band {
+      background: var(--magenta); padding: .82rem 0; overflow: hidden; white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: mscroll 24s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(6,4,10,.82); padding: 0 2rem;
+    }
+
+    /* ── SHARED ── */
+    section { padding: clamp(5rem,12vw,9rem) clamp(1.5rem,5vw,4rem); }
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem; letter-spacing: .26em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    /* Scroll reveal — visible by default; JS hides them after load */
+    .rv { transition: opacity .75s ease, transform .75s ease; }
+    .js-loaded .rv { opacity: 0; transform: translateY(28px); }
+    .js-loaded .rv.visible { opacity: 1; transform: none; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--void2); }
+    .about-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem,6vw,6rem); align-items: center;
+    }
+    @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; } }
+
+    /* Magenta duotone via CSS blend */
+    .about-photo-wrap {
+      position: relative; overflow: hidden; background: var(--magenta);
+    }
+    .about-photo-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(196,0,110,.38) 0%, rgba(0,212,240,.12) 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .about-photo-wrap img {
+      width: 100%; display: block;
+      filter: grayscale(1) contrast(1.05);
+      mix-blend-mode: luminosity;
+      transition: transform 6s ease;
+    }
+    .about-photo-wrap:hover img { transform: scale(1.03); }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.9rem,3.8vw,3rem);
+      line-height: 1.18; color: var(--white);
+    }
+    .about-quote em { color: var(--magenta); font-style: normal; }
+    .about-body {
+      font-size: .9rem; line-height: 1.85;
+      color: rgba(240,236,230,.6);
+    }
+    .about-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      padding-top: 1.6rem; margin-top: .5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 2.3rem; font-weight: 600;
+      color: var(--gold); line-height: 1;
+    }
+    .stat-lbl {
+      display: block;
+      font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(240,236,230,.35); margin-top: .3rem;
+    }
+
+    /* ── SETS ── */
+    .sets { background: var(--void); }
+    .sets-header {
+      max-width: 1200px; margin: 0 auto 3.5rem;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .sets-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 600;
+      font-size: clamp(2.8rem,6vw,5rem); line-height: 1; color: var(--white);
+    }
+    .sets-title em { color: var(--gold); font-style: normal; }
+    .sets-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+    }
+    @media (max-width: 900px) { .sets-grid { grid-template-columns: 1fr; } }
+    .set-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    @media (max-width: 900px) { .set-card { aspect-ratio: 16/9; } }
+    .set-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 6s ease;
+    }
+    .set-card:hover .set-bg { transform: scale(1.05); }
+    .set-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(6,4,10,.97) 0%, rgba(6,4,10,.5) 55%, rgba(6,4,10,.18) 100%);
+      transition: background .4s;
+    }
+    .set-card:hover .set-overlay { background: linear-gradient(to top, rgba(6,4,10,1) 0%, rgba(6,4,10,.62) 55%, rgba(6,4,10,.28) 100%); }
+    .set-body {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2rem 1.8rem;
+    }
+    .set-date {
+      font-family: 'Space Mono', monospace;
+      font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--magenta); margin-bottom: .5rem;
+    }
+    .set-venue {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(1.5rem,2.8vw,2.1rem);
+      font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: .35rem;
+    }
+    .set-city {
+      font-size: .66rem; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(240,236,230,.45); margin-bottom: 1.2rem;
+    }
+    .set-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: .5rem; letter-spacing: .14em;
+      padding: .3rem .75rem; border: 1px solid rgba(232,201,106,.28);
+      color: var(--gold); text-transform: uppercase; width: fit-content;
+    }
+
+    /* ── MIXES ── */
+    .mixes { background: var(--void2); }
+    .mixes-inner { max-width: 1200px; margin: 0 auto; }
+    .mixes-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 600;
+      font-size: clamp(2.8rem,6vw,5rem); color: var(--white); line-height: 1;
+      margin-bottom: 3rem;
+    }
+    .mixes-title em { color: var(--magenta); }
+    .mixes-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
+    }
+    @media (max-width: 640px) { .mixes-grid { grid-template-columns: 1fr; } }
+    .mix-card {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color .3s;
+    }
+    .mix-card:hover { border-color: rgba(196,0,110,.4); }
+    .mix-num {
+      font-family: 'Space Mono', monospace;
+      font-size: .54rem; letter-spacing: .2em; color: var(--gold);
+    }
+    .mix-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.55rem; font-weight: 600; color: var(--white);
+    }
+    .mix-meta {
+      font-size: .66rem; color: rgba(240,236,230,.38); letter-spacing: .08em;
+    }
+    /* Animated waveform bars */
+    .mix-waveform { display: flex; align-items: center; gap: 2px; height: 42px; }
+    .wf-bar {
+      flex: 1; background: var(--magenta); border-radius: 1px; opacity: .25;
+      animation: wfpulse ease-in-out infinite;
+    }
+    @keyframes wfpulse {
+      0%,100% { opacity: .12; transform: scaleY(.5); }
+      50%      { opacity: .55; transform: scaleY(1); }
+    }
+    .mix-placeholder {
+      font-family: 'Space Mono', monospace;
+      font-size: .56rem; letter-spacing: .1em;
+      color: rgba(240,236,230,.22); padding-top: .4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── BOOKING ── */
+    .booking { background: var(--void); border-top: 1px solid var(--border); }
+    .booking-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem,6vw,6rem);
+    }
+    @media (max-width: 768px) { .booking-inner { grid-template-columns: 1fr; } }
+    .booking-hed {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 600;
+      font-size: clamp(2.5rem,5vw,4rem); color: var(--white); line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .booking-hed em { color: var(--magenta); font-style: normal; }
+    .booking-desc {
+      font-size: .9rem; line-height: 1.8;
+      color: rgba(240,236,230,.55); margin-bottom: 1.5rem;
+    }
+    .booking-detail {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem; line-height: 2; letter-spacing: .12em;
+      color: rgba(240,236,230,.35);
+    }
+    .booking-form { display: flex; flex-direction: column; gap: .9rem; }
+    .booking-form input,
+    .booking-form select,
+    .booking-form textarea {
+      background: var(--void2); border: 1px solid var(--border);
+      color: var(--white); font-family: 'Jost', sans-serif;
+      font-size: .85rem; font-weight: 300;
+      padding: .9rem 1.1rem; outline: none; width: 100%;
+      transition: border-color .3s;
+    }
+    .booking-form input:focus,
+    .booking-form select:focus,
+    .booking-form textarea:focus { border-color: rgba(196,0,110,.5); }
+    .booking-form input::placeholder,
+    .booking-form textarea::placeholder { color: rgba(240,236,230,.3); }
+    .booking-form select { color: rgba(240,236,230,.6); }
+    .booking-form select option { background: var(--void2); color: var(--white); }
+    .booking-form textarea { resize: vertical; min-height: 110px; }
+    .booking-form button {
+      background: var(--magenta); color: var(--white); border: none;
+      font-family: 'Jost', sans-serif; font-size: .68rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      padding: 1rem 2rem; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background .3s;
+    }
+    .booking-form button:hover { background: var(--magenta-lt); }
+    .booking-form button:disabled { opacity: .6; cursor: default; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--void2);
+      padding: 3rem clamp(1.5rem,5vw,4rem);
+      border-top: 1px solid var(--border);
+      border-radius: 3rem 3rem 0 0;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem; letter-spacing: .12em;
+      color: var(--white); text-decoration: none;
+    }
+    .footer-logo .slash { color: var(--gold); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(240,236,230,.35); text-decoration: none; transition: color .3s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: .58rem; letter-spacing: .1em; color: rgba(240,236,230,.22); }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Mobile overlay menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about"  onclick="closeMobile()">About</a>
+    <a href="#sets"   onclick="closeMobile()">Sets</a>
+    <a href="#mixes"  onclick="closeMobile()">Mixes</a>
+    <a href="#book"   onclick="closeMobile()">Book</a>
+    <a href="#book" class="nav-cta" style="display:block" onclick="closeMobile()">Book a Set →</a>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo"><span class="slash">//</span> DJ NATASHA <span class="slash">\\</span></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#sets">Sets</a></li>
+        <li><a href="#mixes">Mixes</a></li>
+        <li><a href="#book">Book</a></li>
+      </ul>
+      <a href="#book" class="nav-cta">Book a Set →</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <!-- ⬡ SWAP: Replace src with Natasha's actual cropped-eyes photo from her site -->
+      <img id="heroImg"
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1920&q=80"
+        alt="DJ Natasha" fetchpriority="high">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-overlay-bottom"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow rv">// Electronic &nbsp;·&nbsp; Disco &nbsp;·&nbsp; Music //</p>
+      <h1 class="hero-name rv">DJ Natasha</h1>
+      <p class="hero-sub rv">Available for Bookings Worldwide</p>
+      <div class="hero-ctas rv">
+        <a href="#book"  class="btn-primary">Book a Set</a>
+        <a href="#mixes" class="btn-ghost">Listen Now</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- two copies for seamless loop -->
+      <span class="marquee-item">// DJ Natasha ·</span>
+      <span class="marquee-item">Electronic ·</span>
+      <span class="marquee-item">Disco ·</span>
+      <span class="marquee-item">Available for Bookings ·</span>
+      <span class="marquee-item">Private Events ·</span>
+      <span class="marquee-item">Club Nights ·</span>
+      <span class="marquee-item">Festivals ·</span>
+      <span class="marquee-item">// DJ Natasha ·</span>
+      <span class="marquee-item">Electronic ·</span>
+      <span class="marquee-item">Disco ·</span>
+      <span class="marquee-item">Available for Bookings ·</span>
+      <span class="marquee-item">Private Events ·</span>
+      <span class="marquee-item">Club Nights ·</span>
+      <span class="marquee-item">Festivals ·</span>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-photo-wrap rv">
+        <!-- ⬡ SWAP: Replace with Natasha's actual portrait photo -->
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="DJ Natasha portrait">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <p class="eyebrow rv">// The Artist</p>
+        <h2 class="about-quote rv">The dance floor is a <em>sacred space.</em></h2>
+        <p class="about-body rv">
+          <!-- ⬡ PLACEHOLDER — replace with Natasha's actual bio text -->
+          DJ Natasha is an electronic and disco music artist whose sets move between euphoric peaks and hypnotic depth. Drawing from the rich history of dance music — from underground warehouse raves to glittering disco nights — she crafts journeys designed to dissolve the boundaries between body and sound.
+        </p>
+        <p class="about-body rv">
+          <!-- ⬡ PLACEHOLDER — replace with Natasha's actual bio text -->
+          With a catalogue built across years of residencies, headline slots, and meticulously crafted studio mixes, Natasha brings a rare command of energy management — knowing precisely when to lift a room and when to pull it deeper into the groove.
+        </p>
+        <div class="about-stats rv">
+          <div><!-- ⬡ PLACEHOLDER -->
+            <span class="stat-num">10+</span>
+            <span class="stat-lbl">Years Playing</span>
+          </div>
+          <div><!-- ⬡ PLACEHOLDER -->
+            <span class="stat-num">200+</span>
+            <span class="stat-lbl">Headline Sets</span>
+          </div>
+          <div>
+            <span class="stat-num">∞</span>
+            <span class="stat-lbl">Hours on the Floor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── UPCOMING SETS ── -->
+  <section class="sets" id="sets">
+    <div class="sets-header rv">
+      <div>
+        <p class="eyebrow">// Live</p>
+        <h2 class="sets-title">Upcoming <em>Sets</em></h2>
+      </div>
+      <a href="#book" class="btn-ghost">Request a Booking →</a>
+    </div>
+    <div class="sets-grid">
+      <div class="set-card rv">
+        <div class="set-bg" style="background-image:url('https://images.unsplash.com/photo-1571266028243-d220c6f13e0c?w=800&q=80')"></div>
+        <div class="set-overlay"></div>
+        <div class="set-body">
+          <!-- ⬡ PLACEHOLDER — replace with real show details -->
+          <p class="set-date">Sat, Aug 02 · 11 PM</p>
+          <h3 class="set-venue">Club Night</h3>
+          <p class="set-city">City · Venue TBA</p>
+          <span class="set-tag">Electronic</span>
+        </div>
+      </div>
+      <div class="set-card rv">
+        <div class="set-bg" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80')"></div>
+        <div class="set-overlay"></div>
+        <div class="set-body">
+          <!-- ⬡ PLACEHOLDER — replace with real show details -->
+          <p class="set-date">Fri, Aug 15 · 10 PM</p>
+          <h3 class="set-venue">Private Event</h3>
+          <p class="set-city">City · Venue TBA</p>
+          <span class="set-tag">Disco · Electronic</span>
+        </div>
+      </div>
+      <div class="set-card rv">
+        <div class="set-bg" style="background-image:url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80')"></div>
+        <div class="set-overlay"></div>
+        <div class="set-body">
+          <!-- ⬡ PLACEHOLDER — replace with real show details -->
+          <p class="set-date">Sat, Sep 06 · 11 PM</p>
+          <h3 class="set-venue">Festival Stage</h3>
+          <p class="set-city">City · Festival TBA</p>
+          <span class="set-tag">Live Set</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MIXES ── -->
+  <section class="mixes" id="mixes">
+    <div class="mixes-inner">
+      <p class="eyebrow rv">// Listen</p>
+      <h2 class="mixes-title rv">Recent <em>Mixes</em></h2>
+      <div class="mixes-grid">
+        <div class="mix-card rv">
+          <p class="mix-num">// Mix 001</p>
+          <h3 class="mix-title">Late Night Electronic</h3>
+          <p class="mix-meta">60 min &nbsp;·&nbsp; Electronic &nbsp;·&nbsp; Deep House</p>
+          <div class="mix-waveform" id="wf1"></div>
+          <!-- ⬡ SWAP: Replace with Natasha's actual SoundCloud embed iframe -->
+          <p class="mix-placeholder">// SoundCloud embed — add once Natasha provides link</p>
+        </div>
+        <div class="mix-card rv">
+          <p class="mix-num">// Mix 002</p>
+          <h3 class="mix-title">Disco Fever</h3>
+          <p class="mix-meta">75 min &nbsp;·&nbsp; Disco &nbsp;·&nbsp; Nu-Disco</p>
+          <div class="mix-waveform" id="wf2"></div>
+          <!-- ⬡ SWAP: Replace with Natasha's actual SoundCloud embed iframe -->
+          <p class="mix-placeholder">// SoundCloud embed — add once Natasha provides link</p>
+        </div>
+        <div class="mix-card rv">
+          <p class="mix-num">// Mix 003</p>
+          <h3 class="mix-title">Warehouse Frequencies</h3>
+          <p class="mix-meta">90 min &nbsp;·&nbsp; Techno &nbsp;·&nbsp; Electronic</p>
+          <div class="mix-waveform" id="wf3"></div>
+          <!-- ⬡ SWAP: Replace with Natasha's actual SoundCloud embed iframe -->
+          <p class="mix-placeholder">// SoundCloud embed — add once Natasha provides link</p>
+        </div>
+        <div class="mix-card rv">
+          <p class="mix-num">// Mix 004</p>
+          <h3 class="mix-title">Golden Hour Grooves</h3>
+          <p class="mix-meta">55 min &nbsp;·&nbsp; Disco &nbsp;·&nbsp; Soul &nbsp;·&nbsp; Funk</p>
+          <div class="mix-waveform" id="wf4"></div>
+          <!-- ⬡ SWAP: Replace with Natasha's actual SoundCloud embed iframe -->
+          <p class="mix-placeholder">// SoundCloud embed — add once Natasha provides link</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BOOKING ── -->
+  <section class="booking" id="book">
+    <div class="booking-inner">
+      <div>
+        <p class="eyebrow rv">// Bookings</p>
+        <h2 class="booking-hed rv">Book <em>Natasha</em></h2>
+        <p class="booking-desc rv">Available for club nights, private events, brand activations, festivals, and corporate events. Worldwide.</p>
+        <p class="booking-detail rv">
+          // Inquiries responded to within 48 hours<br>
+          // All genres · All event types<br>
+          // Rider available on request
+        </p>
+      </div>
+      <form class="booking-form rv" id="bookingForm">
+        <input type="text"  name="name"    placeholder="Your Name"       required>
+        <input type="email" name="email"   placeholder="Email Address"   required>
+        <input type="text"  name="event"   placeholder="Event / Venue">
+        <input type="text"  name="date"    placeholder="Proposed Date">
+        <select name="type">
+          <option value="" disabled selected>Event Type</option>
+          <option>Club Night</option>
+          <option>Private Event</option>
+          <option>Festival</option>
+          <option>Brand Activation</option>
+          <option>Other</option>
+        </select>
+        <textarea name="message" placeholder="Tell me about your event…"></textarea>
+        <button type="submit" id="bookBtn">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo"><span class="slash">//</span> DJ NATASHA <span class="slash">\\</span></a>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#sets">Sets</a></li>
+        <li><a href="#mixes">Mixes</a></li>
+        <li><a href="#book">Book</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 DJ Natasha · All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Accessibility toggle -->
+  <button class="a11y-btn" id="a11yBtn" aria-label="Toggle high-contrast accessibility mode">◑</button>
+
+  <script>
+    // ── JS LOADED — activate scroll-reveal ──
+    document.documentElement.classList.add('js-loaded');
+
+    // ── CURSOR ──
+    if (!window.matchMedia('(hover: none)').matches) {
+      const cur = document.getElementById('cursor');
+      const ring = document.getElementById('cursorRing');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+      (function tick() {
+        cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+        rx += (mx - rx) * .12; ry += (my - ry) * .12;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(tick);
+      })();
+    }
+
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── MOBILE MENU ──
+    const toggle = document.getElementById('navToggle');
+    const mm = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      mm.classList.toggle('open');
+    });
+    function closeMobile() {
+      toggle.classList.remove('open');
+      mm.classList.remove('open');
+    }
+
+    // ── HERO — living image + parallax ──
+    const heroImg = document.getElementById('heroImg');
+    const onHeroLoad = () => requestAnimationFrame(() => heroImg.classList.add('loaded'));
+    heroImg.addEventListener('load', onHeroLoad);
+    if (heroImg.complete) onHeroLoad();
+    window.addEventListener('scroll', () => {
+      const offset = Math.min(window.scrollY * .04, window.innerHeight * .055);
+      heroImg.style.transform = `scale(1.06) translateY(-${offset}px) translateZ(0)`;
+    }, { passive: true });
+
+    // ── PARTICLES — mirror ball light scatter ──
+    (function() {
+      const container = document.getElementById('particles');
+      const colors = ['#e8c96a','#c4006e','#00d4f0','#ffffff','#ff80c0','#b0e8ff'];
+      for (let i = 0; i < 58; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const sz = Math.random() * 3 + 1.5;
+        const dx = (Math.random() - .5) * 70, dy = (Math.random() - .5) * 70;
+        p.style.cssText = [
+          `width:${sz}px`, `height:${sz}px`,
+          `left:${Math.random()*100}%`, `top:${Math.random()*100}%`,
+          `background:${colors[Math.floor(Math.random()*colors.length)]}`,
+          `opacity:${.3 + Math.random() * .55}`,
+          `animation-delay:${Math.random()*9}s`,
+          `animation-duration:${5 + Math.random()*9}s`,
+          `--x1:${dx*.5}px`,`--y1:${dy*.5}px`,
+          `--x2:${-dx*.7}px`,`--y2:${dy*.3}px`,
+          `--x3:${dx*.3}px`,`--y3:${-dy*.6}px`
+        ].join(';');
+        container.appendChild(p);
+      }
+    })();
+
+    // ── SCROLL REVEAL ──
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+    }, { threshold: .12 });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+    // Hero reveals immediately
+    document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('visible'));
+
+    // ── WAVEFORM BARS ──
+    ['wf1','wf2','wf3','wf4'].forEach(id => {
+      const wf = document.getElementById(id);
+      if (!wf) return;
+      for (let i = 0; i < 42; i++) {
+        const b = document.createElement('div');
+        b.className = 'wf-bar';
+        b.style.cssText = `height:${20+Math.random()*80}%;animation-delay:${Math.random()*2}s;animation-duration:${.7+Math.random()*1.4}s`;
+        wf.appendChild(b);
+      }
+    });
+
+    // ── BOOKING FORM ──
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('bookBtn');
+      btn.textContent = 'Sending…'; btn.disabled = true;
+      try {
+        const res = await fetch('https://designmywebsitenow.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: 'NATASHA_EMAIL_HERE', // ⬡ SWAP with Natasha's actual email
+            clientName: 'DJ Natasha',
+            ...Object.fromEntries(new FormData(this))
+          })
+        });
+        if (res.ok) { btn.textContent = 'Inquiry Sent ✦'; this.reset(); }
+        else { btn.textContent = 'Something went wrong — try again'; btn.disabled = false; }
+      } catch {
+        btn.textContent = 'Something went wrong — try again'; btn.disabled = false;
+      }
+    });
+
+    // ── ACCESSIBILITY ──
+    const a11yBtn = document.getElementById('a11yBtn');
+    const A11Y_KEY = 'djnatasha_a11y';
+    if (localStorage.getItem(A11Y_KEY) === '1') document.body.classList.add('a11y-on');
+    a11yBtn.addEventListener('click', () => {
+      document.body.classList.toggle('a11y-on');
+      localStorage.setItem(A11Y_KEY, document.body.classList.contains('a11y-on') ? '1' : '0');
+    });
+  </script>
+</body>
+</html>
