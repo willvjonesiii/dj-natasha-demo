@@ -255,25 +255,25 @@
     }
     .hero-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(.54rem,1vw,.66rem); letter-spacing: .28em;
+      font-size: clamp(.58rem,1vw,.68rem); letter-spacing: .28em;
       text-transform: uppercase; color: var(--sage); opacity: .9;
     }
     .hero-name {
       font-family: 'Fraunces', serif; font-weight: 300;
-      font-size: clamp(3.6rem,11vw,10rem);
-      line-height: .92; color: var(--cream);
+      font-size: clamp(3rem,5.5vw,5rem);
+      line-height: 1; color: var(--cream);
     }
     .hero-name em {
-      font-style: italic; color: var(--gold);
+      font-style: italic; color: var(--gold); display: block;
     }
     .hero-meaning {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(.52rem,.9vw,.64rem); letter-spacing: .22em;
-      text-transform: uppercase; color: rgba(244,237,227,.38);
+      font-size: clamp(.5rem,.75vw,.6rem); letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(244,237,227,.35);
     }
     .hero-desc {
-      font-size: clamp(.9rem,1.4vw,1.05rem); line-height: 1.75;
-      color: rgba(244,237,227,.72); max-width: 520px; font-weight: 300;
+      font-size: clamp(.88rem,1.2vw,1rem); line-height: 1.75;
+      color: rgba(244,237,227,.72); max-width: 440px; font-weight: 300;
     }
     .hero-ctas {
       display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .6rem;
@@ -321,18 +321,8 @@
       width: 56px; height: auto; flex-shrink: 0;
     }
 
-    .hero-scroll {
-      position: absolute; bottom: 2.5rem; left: 25%; transform: translateX(-50%);
-      z-index: 10; display: flex; flex-direction: column; align-items: center; gap: .5rem;
-    }
-    @media (max-width: 860px) { .hero-scroll { left: 50%; } }
-    .hero-scroll span {
-      font-family: 'DM Mono', monospace; font-size: .48rem;
-      letter-spacing: .22em; color: rgba(244,237,227,.28); text-transform: uppercase;
-    }
     .scroll-line {
-      width: 1px; height: 38px;
-      background: linear-gradient(to bottom, rgba(201,160,96,.5), transparent);
+      display: none;
       animation: spulse 2.2s ease-in-out infinite;
     }
     @keyframes spulse { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
@@ -826,10 +816,6 @@
         <div class="hero-vignette" aria-hidden="true"></div>
         <div class="hero-overlay-bottom" aria-hidden="true"></div>
       </div><!-- /hero-right -->
-      <div class="hero-scroll" aria-hidden="true">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
     </section>
 
     <!-- MARQUEE -->
