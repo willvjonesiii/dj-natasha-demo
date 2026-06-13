@@ -20,18 +20,20 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --forest:     #0b1c17;
-      --forest2:    #122218;
-      --teal:       #2b6e5a;
-      --teal-lt:    #3a9070;
+      --forest:     #071a16;
+      --forest2:    #0b2420;
+      --teal:       #0abfa3;
+      --teal-lt:    #2dd4bc;
+      --mint:       #4dd9c0;
       --gold:       #c9a060;
       --gold-lt:    #ddb978;
-      --cream:      #f4ede3;
-      --cream2:     #ede4d8;
-      --sage:       #7aaa8e;
-      --border:     rgba(201,160,96,0.14);
+      --cream:      #f0ede6;
+      --cream2:     #e4dfd8;
+      --sage:       #6dcfbb;
+      --border:     rgba(10,191,163,0.18);
+      --teal-dim:   rgba(10,191,163,0.08);
       --gold-dim:   rgba(201,160,96,0.08);
-      --text-dim:   rgba(244,237,227,0.55);
+      --text-dim:   rgba(240,237,230,0.55);
     }
 
     html { scroll-behavior: smooth; }
@@ -108,7 +110,7 @@
     /* ── MOBILE MENU ── */
     .mobile-menu {
       display: none; position: fixed; inset: 0;
-      background: rgba(11,28,23,0.97); backdrop-filter: blur(18px);
+      background: rgba(7,26,22,0.97); backdrop-filter: blur(18px);
       flex-direction: column; align-items: center; justify-content: center; gap: 2.4rem;
       z-index: 998;
     }
@@ -128,18 +130,20 @@
       transition: background .4s, padding .4s, backdrop-filter .4s;
     }
     .nav.scrolled {
-      background: rgba(11,28,23,0.92);
+      background: rgba(7,26,22,0.92);
       backdrop-filter: blur(16px);
       padding-top: 1rem; padding-bottom: 1rem;
     }
-    .nav-left { display: flex; flex-direction: column; gap: .15rem; text-decoration: none; }
+    .nav-left { display: flex; flex-direction: row; align-items: center; gap: .7rem; text-decoration: none; }
+    .nav-symbol { height: 36px; width: auto; flex-shrink: 0; }
+    .nav-brand { display: flex; flex-direction: column; gap: .1rem; }
     .nav-logo {
       font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
       font-size: 1.05rem; color: var(--cream); letter-spacing: .02em; line-height: 1;
     }
     .nav-tag {
       font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--gold); opacity: .75;
+      text-transform: uppercase; color: var(--teal); opacity: .85;
     }
     .nav-right { display: flex; align-items: center; gap: 2.5rem; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -185,8 +189,8 @@
       background: linear-gradient(to right,
         var(--forest)  0%,
         var(--forest) 70%,
-        rgba(11,28,23,.55) 88%,
-        rgba(11,28,23,0) 100%
+        rgba(7,26,22,.55) 88%,
+        rgba(7,26,22,0) 100%
       );
       display: flex; align-items: center;
       position: relative; z-index: 2;
@@ -215,10 +219,10 @@
         ellipse 65% 80% at 50% 52%,
         transparent         0%,
         transparent        22%,
-        rgba(11,28,23,.18) 38%,
-        rgba(11,28,23,.55) 54%,
-        rgba(11,28,23,.84) 68%,
-        rgba(11,28,23,.96) 82%,
+        rgba(7,26,22,.18) 38%,
+        rgba(7,26,22,.55) 54%,
+        rgba(7,26,22,.84) 68%,
+        rgba(7,26,22,.96) 82%,
         var(--forest)      94%
       );
     }
@@ -304,6 +308,10 @@
       font-size: .52rem; letter-spacing: .18em; text-transform: uppercase;
       color: rgba(244,237,227,.5);
     }
+    .hero-symbol {
+      width: 56px; height: auto; flex-shrink: 0;
+    }
+
     .hero-scroll {
       position: absolute; bottom: 2.5rem; left: 25%; transform: translateX(-50%);
       z-index: 10; display: flex; flex-direction: column; align-items: center; gap: .5rem;
@@ -333,7 +341,7 @@
     .marquee-item {
       font-family: 'DM Mono', monospace;
       font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(11,28,23,.78); padding: 0 2rem;
+      color: rgba(7,26,22,.78); padding: 0 2rem;
     }
 
     /* ── SHARED ── */
@@ -369,12 +377,12 @@
     }
     .about-portrait-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(18,34,24,.55) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(11,36,32,.55) 0%, transparent 60%);
     }
     .about-portrait-badge {
       position: absolute; bottom: 1.6rem; left: 1.6rem;
       padding: .5rem 1rem;
-      background: rgba(43,110,90,.25); backdrop-filter: blur(8px);
+      background: rgba(10,191,163,.25); backdrop-filter: blur(8px);
       border: 1px solid rgba(201,160,96,.22);
       font-family: 'DM Mono', monospace; font-size: .52rem;
       letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
@@ -433,7 +441,7 @@
     .helps-item {
       display: flex; align-items: center; gap: .6rem;
       padding: .65rem .8rem; border: 1px solid var(--border);
-      background: rgba(122,170,142,.05);
+      background: rgba(109,207,187,.05);
     }
     .helps-item::before {
       content: '✦'; color: var(--sage); font-size: .55rem; flex-shrink: 0;
@@ -465,10 +473,10 @@
     .svc-card:hover { transform: translateY(-3px); }
     .svc-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(11,28,23,.92) 0%, rgba(11,28,23,.55) 60%, rgba(11,28,23,.2) 100%);
+      background: linear-gradient(to top, rgba(7,26,22,.92) 0%, rgba(7,26,22,.55) 60%, rgba(7,26,22,.2) 100%);
       transition: background .3s;
     }
-    .svc-card:hover .svc-overlay { background: linear-gradient(to top, rgba(11,28,23,.88) 0%, rgba(11,28,23,.45) 60%, rgba(11,28,23,.15) 100%); }
+    .svc-card:hover .svc-overlay { background: linear-gradient(to top, rgba(7,26,22,.88) 0%, rgba(7,26,22,.45) 60%, rgba(7,26,22,.15) 100%); }
     .svc-body { position: relative; z-index: 1; padding: 1.6rem 1.4rem; }
     .svc-num {
       font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .22em;
@@ -520,8 +528,8 @@
     }
     .pkg-loyalty {
       grid-column: 1 / -1;
-      border: 1px solid rgba(122,170,142,.2); padding: 1.4rem 1.6rem;
-      background: rgba(122,170,142,.04);
+      border: 1px solid rgba(109,207,187,.2); padding: 1.4rem 1.6rem;
+      background: rgba(109,207,187,.04);
       display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
     }
     @media (max-width: 800px) { .pkg-loyalty { grid-column: 1; } }
@@ -558,7 +566,7 @@
     }
     .avail-notice {
       margin-top: 1.4rem; padding: .8rem 1rem;
-      background: rgba(122,170,142,.06); border: 1px solid rgba(122,170,142,.15);
+      background: rgba(109,207,187,.06); border: 1px solid rgba(109,207,187,.15);
       font-family: 'DM Mono', monospace; font-size: .56rem;
       letter-spacing: .14em; text-transform: uppercase;
       color: var(--sage);
@@ -603,25 +611,25 @@
 
     /* ── EMAIL SIGNUP ── */
     .signup-section {
-      background: var(--teal);
+      background: linear-gradient(135deg, #0abfa3 0%, #4dd9c0 60%, #7ee8d8 100%);
       padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
       display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 2rem;
     }
     .signup-eyebrow {
       font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .26em;
-      text-transform: uppercase; color: rgba(11,28,23,.65);
+      text-transform: uppercase; color: rgba(7,26,22,.65);
     }
     .signup-title {
       font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
-      font-size: clamp(2rem,5vw,3.5rem); color: rgba(11,28,23,.9); line-height: 1.1;
+      font-size: clamp(2rem,5vw,3.5rem); color: rgba(7,26,22,.9); line-height: 1.1;
     }
     .signup-sub {
-      font-size: .95rem; color: rgba(11,28,23,.65); max-width: 480px; line-height: 1.7;
+      font-size: .95rem; color: rgba(7,26,22,.65); max-width: 480px; line-height: 1.7;
     }
     .signup-discount {
       font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .2em;
-      text-transform: uppercase; color: rgba(11,28,23,.5);
+      text-transform: uppercase; color: rgba(7,26,22,.5);
     }
     .signup-form {
       display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center;
@@ -629,22 +637,22 @@
     }
     .signup-form input {
       flex: 1; min-width: 220px;
-      background: rgba(11,28,23,.1); border: 1px solid rgba(11,28,23,.25);
-      color: rgba(11,28,23,.9); padding: .88rem 1.2rem;
+      background: rgba(7,26,22,.1); border: 1px solid rgba(7,26,22,.25);
+      color: rgba(7,26,22,.9); padding: .88rem 1.2rem;
       font-family: 'DM Sans', sans-serif; font-size: .88rem;
       outline: none;
     }
-    .signup-form input::placeholder { color: rgba(11,28,23,.45); }
-    .signup-form input:focus { border-color: rgba(11,28,23,.55); }
+    .signup-form input::placeholder { color: rgba(7,26,22,.45); }
+    .signup-form input:focus { border-color: rgba(7,26,22,.55); }
     .signup-btn {
-      background: rgba(11,28,23,.85); color: var(--cream);
+      background: rgba(7,26,22,.85); color: var(--cream);
       border: none; padding: .88rem 1.8rem; cursor: pointer;
       font-family: 'DM Sans', sans-serif; font-size: .66rem; font-weight: 500;
       letter-spacing: .16em; text-transform: uppercase;
       white-space: nowrap; flex-shrink: 0; min-height: 44px;
       transition: background .3s;
     }
-    .signup-btn:hover { background: rgba(11,28,23,1); }
+    .signup-btn:hover { background: rgba(7,26,22,1); }
 
     /* ── CTA BAND ── */
     .cta-band {
@@ -732,7 +740,7 @@
     }
     .footer-iarp {
       font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .12em;
-      text-transform: uppercase; color: rgba(122,170,142,.45);
+      text-transform: uppercase; color: rgba(109,207,187,.45);
     }
 
   </style>
@@ -745,8 +753,33 @@
   <!-- NAV -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
     <a href="#" class="nav-left" aria-label="Tashi Reiki home">
-      <span class="nav-logo">Tashi Reiki</span>
-      <span class="nav-tag">East Boston · MA</span>
+      <svg class="nav-symbol" viewBox="0 0 100 108" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="symGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e8d080"/>
+            <stop offset="55%" stop-color="#c9a060"/>
+            <stop offset="100%" stop-color="#9a6830"/>
+          </linearGradient>
+        </defs>
+        <!-- Hexagon: pointy top + bottom -->
+        <polygon points="50,4 87,26 87,72 50,94 13,72 13,26"
+                 stroke="url(#symGold)" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+        <!-- Sun circle -->
+        <circle cx="50" cy="36" r="15" stroke="url(#symGold)" stroke-width="2" fill="none"/>
+        <!-- Wave 1 -->
+        <path d="M 24,54 Q 37,45 50,51 Q 63,57 76,48"
+              stroke="url(#symGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Wave 2 -->
+        <path d="M 20,65 Q 35,56 50,62 Q 65,68 80,59"
+              stroke="url(#symGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Wave 3 -->
+        <path d="M 22,76 Q 37,67 50,73 Q 63,79 78,70"
+              stroke="url(#symGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-logo">Tashi Reiki</span>
+        <span class="nav-tag">East Boston · MA</span>
+      </div>
     </a>
     <div class="nav-right">
       <ul class="nav-links">
@@ -778,6 +811,21 @@
       <div class="hero-left">
       <div class="hero-content">
         <p class="hero-eyebrow rv">Reiki · Sound Healing · East Boston, MA</p>
+        <svg class="hero-symbol rv" viewBox="0 0 100 108" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="heroSymGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e8d080"/>
+              <stop offset="55%" stop-color="#c9a060"/>
+              <stop offset="100%" stop-color="#9a6830"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,4 87,26 87,72 50,94 13,72 13,26"
+                   stroke="url(#heroSymGold)" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+          <circle cx="50" cy="36" r="15" stroke="url(#heroSymGold)" stroke-width="2" fill="none"/>
+          <path d="M 24,54 Q 37,45 50,51 Q 63,57 76,48" stroke="url(#heroSymGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M 20,65 Q 35,56 50,62 Q 65,68 80,59" stroke="url(#heroSymGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M 22,76 Q 37,67 50,73 Q 63,79 78,70" stroke="url(#heroSymGold)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
         <h1 class="hero-name rv">
           Return to<br><em>alignment.</em>
         </h1>
