@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500;1,9..144,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/a2ea5be4-e663-47dc-bb7a-c708846afe3d-tashireiki_c?asset_id=1e87cde5-7bf5-42e2-94db-df7ac6d2b60e&img_etag=%22efd8638bbaa648a9951744bc43e42813%22&image_assets=false&size=1024">
+  <link rel="preload" as="image" href="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/6d7640f5-ceab-40db-9471-426c4707b07d-sound_bowl_j?asset_id=8dc3b1e2-e32d-4fc1-bfea-a614720030cd&img_etag=%220c7898fe17df4ec58114e65f11a90a73%22&image_assets=false&size=2560">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -172,39 +172,73 @@
       .nav-toggle { display: flex; }
     }
 
-    /* ── HERO ── */
+    /* ── HERO (Scrying Portal Split) ── */
     .hero {
-      position: relative; min-height: 100dvh;
-      display: flex; align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100dvh;
+      padding: 0;
       overflow: hidden;
     }
-    .hero-bg { position: absolute; inset: 0; }
-    .hero-bg img {
+    .hero-left {
+      min-height: 100dvh;
+      background: linear-gradient(to right,
+        var(--forest)  0%,
+        var(--forest) 70%,
+        rgba(11,28,23,.55) 88%,
+        rgba(11,28,23,0) 100%
+      );
+      display: flex; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .hero-right {
+      position: relative;
+      z-index: 0;
+      background: var(--forest);
+      overflow: hidden;
+      min-height: 100dvh;
+    }
+    .hero-right img {
+      position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center 18%;
+      object-fit: cover; object-position: center center;
+      display: block; z-index: 1;
       transform: scale(1.08) translateZ(0);
       will-change: transform;
       transition: transform 8s ease;
     }
-    .hero-bg img.loaded { transform: scale(1.06) translateZ(0); }
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(
-        105deg,
-        rgba(11,28,23,.82) 0%,
-        rgba(11,28,23,.62) 45%,
-        rgba(11,28,23,.38) 100%
+    .hero-right img.loaded { transform: scale(1.06) translateZ(0); }
+    .hero-vignette {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 65% 80% at 50% 52%,
+        transparent         0%,
+        transparent        22%,
+        rgba(11,28,23,.18) 38%,
+        rgba(11,28,23,.55) 54%,
+        rgba(11,28,23,.84) 68%,
+        rgba(11,28,23,.96) 82%,
+        var(--forest)      94%
       );
     }
     .hero-overlay-bottom {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 35%; z-index: 1;
+      position: absolute; bottom: 0; left: 0; right: 0; height: 35%; z-index: 3;
       background: linear-gradient(to top, var(--forest) 0%, transparent 100%);
     }
     .hero-content {
       position: relative; z-index: 4;
-      padding: clamp(7rem,14vw,10rem) clamp(1.5rem,6vw,5rem) clamp(4rem,8vw,6rem);
-      max-width: 800px;
+      padding: clamp(7rem,12vw,10rem) clamp(1.5rem,5vw,4rem) clamp(4rem,8vw,6rem);
+      max-width: 640px;
       display: flex; flex-direction: column; gap: 1.4rem;
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left {
+        background: var(--forest);
+        min-height: 100dvh;
+      }
     }
     .hero-eyebrow {
       font-family: 'DM Mono', monospace;
@@ -271,9 +305,10 @@
       color: rgba(244,237,227,.5);
     }
     .hero-scroll {
-      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-      z-index: 4; display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      position: absolute; bottom: 2.5rem; left: 25%; transform: translateX(-50%);
+      z-index: 10; display: flex; flex-direction: column; align-items: center; gap: .5rem;
     }
+    @media (max-width: 860px) { .hero-scroll { left: 50%; } }
     .hero-scroll span {
       font-family: 'DM Mono', monospace; font-size: .48rem;
       letter-spacing: .22em; color: rgba(244,237,227,.28); text-transform: uppercase;
@@ -629,6 +664,27 @@
     }
     .cta-band-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
+    /* ── EVENTS ── */
+    .events-section { background: var(--forest2); }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+    .event-card {
+      position: relative; overflow: hidden;
+      background: var(--forest); border: 1px solid var(--border);
+      transition: border-color .3s, transform .35s ease;
+    }
+    .event-card:hover { border-color: rgba(201,160,96,.38); transform: translateY(-3px); }
+    .event-card img {
+      width: 100%; display: block;
+      aspect-ratio: 3/4; object-fit: cover; object-position: center top;
+      transition: transform .6s ease;
+    }
+    .event-card:hover img { transform: scale(1.04); }
+
     /* ── FOOTER ── */
     footer {
       background: rgba(6,12,10,.95);
@@ -719,16 +775,7 @@
 
     <!-- HERO -->
     <section class="hero" aria-label="Hero">
-      <div class="hero-bg">
-        <img
-          src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/a2ea5be4-e663-47dc-bb7a-c708846afe3d-tashireiki_c?asset_id=1e87cde5-7bf5-42e2-94db-df7ac6d2b60e&img_etag=%22efd8638bbaa648a9951744bc43e42813%22&image_assets=false&size=1024"
-          alt="Natasha Weiss, Reiki practitioner at Tashi Reiki"
-          id="heroImg"
-          fetchpriority="high"
-        >
-      </div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-overlay-bottom" aria-hidden="true"></div>
+      <div class="hero-left">
       <div class="hero-content">
         <p class="hero-eyebrow rv">Reiki · Sound Healing · East Boston, MA</p>
         <h1 class="hero-name rv">
@@ -747,6 +794,17 @@
           <div class="hero-cred"><div class="hero-cred-dot"></div><span>Reiki Crystal Certified</span></div>
         </div>
       </div>
+      </div><!-- /hero-left -->
+      <div class="hero-right">
+        <img
+          src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/6d7640f5-ceab-40db-9471-426c4707b07d-sound_bowl_j?asset_id=8dc3b1e2-e32d-4fc1-bfea-a614720030cd&img_etag=%220c7898fe17df4ec58114e65f11a90a73%22&image_assets=false&size=2560"
+          alt="Sound healing bowl — Tashi Reiki"
+          id="heroImg"
+          fetchpriority="high"
+        >
+        <div class="hero-vignette" aria-hidden="true"></div>
+        <div class="hero-overlay-bottom" aria-hidden="true"></div>
+      </div><!-- /hero-right -->
       <div class="hero-scroll" aria-hidden="true">
         <span>Scroll</span>
         <div class="scroll-line"></div>
@@ -804,7 +862,7 @@
     <section class="about-section" id="about" aria-labelledby="about-heading">
       <div class="about-portrait-wrap rv">
         <img
-          src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/39186090-bdbe-433b-a6c6-4836c4fc40ae-20250417_124?asset_id=ac9fb1a6-5172-4d5d-a8ae-ca0815ba91c1&img_etag=%2223cc861b343f4ed6ab39c7557f49533d%22&image_assets=false&size=1024"
+          src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/58ee39b1-bce0-43ac-b091-f962090933e3-20241020_155?asset_id=4647d611-52b3-467b-91d6-cbc4f88a50a8&img_etag=%22c52e5bb7ce6f4b80b3129a05d92c0054%22&image_assets=false&size=1024"
           alt="Natasha Weiss — founder of Tashi Reiki"
           loading="lazy"
         >
@@ -889,7 +947,7 @@
       <div class="services-grid">
 
         <div class="svc-card rv"
-          style="background-image:url('https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/687d1861-4955-4b48-9153-f436829af051-tashireikibe?asset_id=4c4768e3-119f-4ca6-b57b-f7f1f912f9cd&img_etag=%224d76b5fc9025454a9ae89f62e35f35e7%22&image_assets=false&size=1024')"
+          style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=75')"
           aria-label="Reiki Reset service">
           <div class="svc-overlay" aria-hidden="true"></div>
           <div class="svc-body">
@@ -901,7 +959,7 @@
         </div>
 
         <div class="svc-card rv"
-          style="background-image:url('https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/0c7471d7-c25d-4aa0-8327-921e65786557-tashireikiso?asset_id=e47c7b30-c570-46af-82ca-0b57fadb082f&img_etag=%22fffbf4eebf1d4c17974eb27d422486e8%22&image_assets=false&size=1024')"
+          style="background-image:url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=75')"
           aria-label="Reiki Session service">
           <div class="svc-overlay" aria-hidden="true"></div>
           <div class="svc-body">
@@ -913,7 +971,7 @@
         </div>
 
         <div class="svc-card rv"
-          style="background-image:url('https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/6d7640f5-ceab-40db-9471-426c4707b07d-sound_bowl_j?asset_id=8dc3b1e2-e32d-4fc1-bfea-a614720030cd&img_etag=%220c7898fe17df4ec58114e65f11a90a73%22&image_assets=false&size=1024')"
+          style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=75')"
           aria-label="Reiki Plus service">
           <div class="svc-overlay" aria-hidden="true"></div>
           <div class="svc-body">
@@ -925,7 +983,7 @@
         </div>
 
         <div class="svc-card rv"
-          style="background-image:url('https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/1a1fee28-acb9-49dc-b917-14900e188b5c-capnewmoonfl?asset_id=d5645b30-9a77-4fcd-a02c-8f323be9a73a&img_etag=%2235045e1de22c406889d8f9afac04a458%22&image_assets=false&size=1024')"
+          style="background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=75')"
           aria-label="Reiki Ultimate service">
           <div class="svc-overlay" aria-hidden="true"></div>
           <div class="svc-body">
@@ -937,7 +995,7 @@
         </div>
 
         <div class="svc-card rv"
-          style="background-image:url('https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/58ee39b1-bce0-43ac-b091-f962090933e3-20241020_155?asset_id=4647d611-52b3-467b-91d6-cbc4f88a50a8&img_etag=%22c52e5bb7ce6f4b80b3129a05d92c0054%22&image_assets=false&size=1024')"
+          style="background-image:url('https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=75')"
           aria-label="Distance Reiki service">
           <div class="svc-overlay" aria-hidden="true"></div>
           <div class="svc-body">
@@ -949,7 +1007,7 @@
         </div>
 
         <div class="svc-card rv"
-          style="background-image:url('https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/8be82001-63e8-4eb0-8f60-5520b75e5c23-eastieweeken?asset_id=a4cd1d5d-5c7e-4096-8282-2b4bfcb7ff0a&img_etag=%226c3c2335f9e246e1b131ac408918c23b%22&image_assets=false&size=1024')"
+          style="background-image:url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=75')"
           aria-label="Pet Reiki and Group Sessions">
           <div class="svc-overlay" aria-hidden="true"></div>
           <div class="svc-body">
@@ -1099,6 +1157,65 @@
       <p class="signup-discount rv">No spam · Unsubscribe anytime · Healing updates only</p>
     </section>
 
+    <!-- EVENTS -->
+    <section class="events-section" id="events" aria-labelledby="events-heading">
+      <p class="eyebrow rv">In the Community</p>
+      <h2 class="section-title rv" id="events-heading">
+        Upcoming &amp;<br><em>recent events.</em>
+      </h2>
+      <div class="events-grid">
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/1a1fee28-acb9-49dc-b917-14900e188b5c-capnewmoonfl?asset_id=d5645b30-9a77-4fcd-a02c-8f323be9a73a&img_etag=%2235045e1de22c406889d8f9afac04a458%22&image_assets=false&size=1024"
+            alt="Tashi Reiki event flyer"
+            loading="lazy"
+          >
+        </div>
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/8be82001-63e8-4eb0-8f60-5520b75e5c23-eastieweeken?asset_id=a4cd1d5d-5c7e-4096-8282-2b4bfcb7ff0a&img_etag=%226c3c2335f9e246e1b131ac408918c23b%22&image_assets=false&size=1024"
+            alt="Eastie Weekend event flyer"
+            loading="lazy"
+          >
+        </div>
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/86508b7f-1ab7-457a-b5d4-d9cc3353e559-tashireikigr?asset_id=56415950-9e53-4a88-aa3b-1e1a15c91a00&img_etag=%223162ef752d4f4e81a87a1c2e058205ac%22&image_assets=false&size=1024"
+            alt="Tashi Reiki event"
+            loading="lazy"
+          >
+        </div>
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/0c7471d7-c25d-4aa0-8327-921e65786557-tashireikiso?asset_id=e47c7b30-c570-46af-82ca-0b57fadb082f&img_etag=%22fffbf4eebf1d4c17974eb27d422486e8%22&image_assets=false&size=1024"
+            alt="Tashi Reiki event"
+            loading="lazy"
+          >
+        </div>
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/687d1861-4955-4b48-9153-f436829af051-tashireikibe?asset_id=4c4768e3-119f-4ca6-b57b-f7f1f912f9cd&img_etag=%224d76b5fc9025454a9ae89f62e35f35e7%22&image_assets=false&size=1024"
+            alt="Tashi Reiki event"
+            loading="lazy"
+          >
+        </div>
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/a2ea5be4-e663-47dc-bb7a-c708846afe3d-tashireiki_c?asset_id=1e87cde5-7bf5-42e2-94db-df7ac6d2b60e&img_etag=%22efd8638bbaa648a9951744bc43e42813%22&image_assets=false&size=1024"
+            alt="Tashi Reiki event"
+            loading="lazy"
+          >
+        </div>
+        <div class="event-card rv">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/39186090-bdbe-433b-a6c6-4836c4fc40ae-20250417_124?asset_id=ac9fb1a6-5172-4d5d-a8ae-ca0815ba91c1&img_etag=%2223cc861b343f4ed6ab39c7557f49533d%22&image_assets=false&size=1024"
+            alt="Tashi Reiki event"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
     <!-- CTA BAND -->
     <div class="cta-band" aria-labelledby="cta-heading">
       <p class="eyebrow rv">Begin Your Healing</p>
@@ -1189,13 +1306,14 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
-    // Hero parallax
+    // Hero parallax (right panel portrait)
     const heroImg = document.getElementById('heroImg');
     if (heroImg) {
       const onLoad = () => requestAnimationFrame(() => heroImg.classList.add('loaded'));
       heroImg.addEventListener('load', onLoad);
       if (heroImg.complete) onLoad();
       window.addEventListener('scroll', () => {
+        if (window.scrollY > window.innerHeight) return;
         const offset = Math.min(window.scrollY * 0.04, window.innerHeight * 0.055);
         heroImg.style.transform = `scale(1.06) translateY(-${offset}px) translateZ(0)`;
       }, { passive: true });
