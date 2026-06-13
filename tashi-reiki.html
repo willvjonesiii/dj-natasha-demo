@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tashi Reiki — Mindfulness &amp; Relaxation · Boston, MA</title>
+  <link rel="icon" type="image/png" href="https://designmywebsitenow.com/images/favicon-merkaba.png">
+  <link rel="apple-touch-icon" href="https://designmywebsitenow.com/images/favicon-merkaba.png">
+  <meta property="og:title" content="Tashi Reiki — Healing &amp; Relaxation · Boston, MA">
+  <meta property="og:description" content="Natasha Weiss is a certified Reiki practitioner, sleep technologist, and sound healer in East Boston. Book a session and return to alignment.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500;1,9..144,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="033917a6-8b9b-4c17-a2b8-174ddbd5fa5d-img_3542_jpg.jpg">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --forest:     #0b1c17;
+      --forest2:    #122218;
+      --teal:       #2b6e5a;
+      --teal-lt:    #3a9070;
+      --gold:       #c9a060;
+      --gold-lt:    #ddb978;
+      --cream:      #f4ede3;
+      --cream2:     #ede4d8;
+      --sage:       #7aaa8e;
+      --border:     rgba(201,160,96,0.14);
+      --gold-dim:   rgba(201,160,96,0.08);
+      --text-dim:   rgba(244,237,227,0.55);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--forest);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    @media (hover: hover) {
+      body { cursor: none; }
+      .cursor {
+        position: fixed; width: 7px; height: 7px; border-radius: 50%;
+        background: var(--sage); pointer-events: none; z-index: 99999;
+        transform: translate(-50%,-50%);
+      }
+      .cursor-ring {
+        position: fixed; width: 28px; height: 28px; border-radius: 50%;
+        border: 1px solid rgba(201,160,96,0.4); pointer-events: none; z-index: 99998;
+        transform: translate(-50%,-50%);
+        transition: width .2s, height .2s;
+      }
+    }
+    @media (hover: none) { .cursor, .cursor-ring { display: none; } }
+
+    /* ── SKIP + FOCUS ── */
+    .skip-link {
+      position: fixed; top: -100%; left: 1rem; z-index: 99999;
+      background: var(--teal); color: var(--cream); padding: .6rem 1.2rem;
+      font-size: .8rem; text-decoration: none; border-radius: 2px;
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 1rem; }
+    *:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* ── A11Y ── */
+    .a11y-btn {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+      width: 2.4rem; height: 2.4rem; border-radius: 50%;
+      background: var(--forest2); border: 1px solid var(--border);
+      color: var(--gold); font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(10px); transition: border-color .3s;
+    }
+    .a11y-btn:hover { border-color: var(--gold); }
+    body.a11y-on { background: #fff !important; color: #111 !important; cursor: auto !important; }
+    body.a11y-on .cursor, body.a11y-on .cursor-ring { display: none !important; }
+    body.a11y-on .nav { background: #fff !important; border-bottom: 1px solid #ccc; }
+    body.a11y-on .nav-logo, body.a11y-on .nav-links a,
+    body.a11y-on .hero-eyebrow, body.a11y-on .hero-name,
+    body.a11y-on .hero-sub, body.a11y-on .eyebrow,
+    body.a11y-on h2, body.a11y-on h3, body.a11y-on p,
+    body.a11y-on li, body.a11y-on span, body.a11y-on a { color: #111 !important; }
+    body.a11y-on a { text-decoration: underline; color: #0057b8 !important; }
+    body.a11y-on section, body.a11y-on footer { background: #f5f5f5 !important; }
+    body.a11y-on .marquee-band { background: #1a1a1a !important; }
+    body.a11y-on .hero-overlay, body.a11y-on .hero-overlay-bottom { display: none; }
+    body.a11y-on .svc-card, body.a11y-on .cred-item,
+    body.a11y-on .pkg-card { background: #e8e8e8 !important; border-color: #999 !important; }
+    body.a11y-on .btn-primary, body.a11y-on .nav-cta { background: #333 !important; color: #fff !important; }
+    body.a11y-on .btn-ghost { border-color: #333 !important; color: #333 !important; }
+    body.a11y-on .eyebrow { font-size: 0.95rem !important; }
+    body.a11y-on .nav-links a, body.a11y-on .nav-cta,
+    body.a11y-on .footer-links a { min-height: 44px; display: inline-flex; align-items: center; }
+    body.a11y-on .fraunces-light { font-weight: 500 !important; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(11,28,23,0.97); backdrop-filter: blur(18px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.4rem;
+      z-index: 998;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.1rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--cream); text-decoration: none; min-height: 44px;
+      display: flex; align-items: center;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.6rem clamp(1.5rem,5vw,4rem);
+      transition: background .4s, padding .4s, backdrop-filter .4s;
+    }
+    .nav.scrolled {
+      background: rgba(11,28,23,0.92);
+      backdrop-filter: blur(16px);
+      padding-top: 1rem; padding-bottom: 1rem;
+    }
+    .nav-left { display: flex; flex-direction: column; gap: .15rem; text-decoration: none; }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+      font-size: 1.05rem; color: var(--cream); letter-spacing: .02em; line-height: 1;
+    }
+    .nav-tag {
+      font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); opacity: .75;
+    }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .66rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(244,237,227,.6); text-decoration: none; transition: color .3s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta {
+      font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(201,160,96,.35);
+      padding: .58rem 1.4rem; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .nav-cta:hover { background: var(--gold-dim); border-color: var(--gold); }
+    .nav-toggle {
+      display: none; background: none; border: none; outline: none;
+      -webkit-appearance: none; appearance: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px; min-height: 44px;
+      align-items: center; justify-content: center;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 1px; background: var(--cream); transition: .3s; }
+    .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100dvh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 18%;
+      transform: scale(1.08) translateZ(0);
+      will-change: transform;
+      transition: transform 8s ease;
+    }
+    .hero-bg img.loaded { transform: scale(1.06) translateZ(0); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        105deg,
+        rgba(11,28,23,.82) 0%,
+        rgba(11,28,23,.62) 45%,
+        rgba(11,28,23,.38) 100%
+      );
+    }
+    .hero-overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 35%; z-index: 1;
+      background: linear-gradient(to top, var(--forest) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 4;
+      padding: clamp(7rem,14vw,10rem) clamp(1.5rem,6vw,5rem) clamp(4rem,8vw,6rem);
+      max-width: 800px;
+      display: flex; flex-direction: column; gap: 1.4rem;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(.54rem,1vw,.66rem); letter-spacing: .28em;
+      text-transform: uppercase; color: var(--sage); opacity: .9;
+    }
+    .hero-name {
+      font-family: 'Fraunces', serif; font-weight: 300;
+      font-size: clamp(3.6rem,11vw,10rem);
+      line-height: .92; color: var(--cream);
+    }
+    .hero-name em {
+      font-style: italic; color: var(--gold);
+    }
+    .hero-meaning {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(.52rem,.9vw,.64rem); letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(244,237,227,.38);
+    }
+    .hero-desc {
+      font-size: clamp(.9rem,1.4vw,1.05rem); line-height: 1.75;
+      color: rgba(244,237,227,.72); max-width: 520px; font-weight: 300;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .6rem;
+    }
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif; font-size: .66rem; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      background: var(--teal); color: var(--cream);
+      padding: .9rem 2.2rem; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background .3s, transform .2s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .btn-primary:hover { background: var(--teal-lt); transform: translateY(-1px); }
+    .btn-ghost {
+      font-family: 'DM Sans', sans-serif; font-size: .66rem; font-weight: 300;
+      letter-spacing: .16em; text-transform: uppercase;
+      border: 1px solid rgba(201,160,96,.38); color: var(--gold);
+      padding: .9rem 2.2rem; text-decoration: none;
+      white-space: nowrap; flex-shrink: 0;
+      transition: border-color .3s, background .3s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+    /* Credentials strip in hero */
+    .hero-creds {
+      display: flex; gap: 1.6rem; flex-wrap: wrap;
+      margin-top: 1rem; padding-top: 1.6rem;
+      border-top: 1px solid rgba(201,160,96,.12);
+    }
+    .hero-cred {
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .hero-cred-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--sage); flex-shrink: 0;
+    }
+    .hero-cred span {
+      font-family: 'DM Mono', monospace;
+      font-size: .52rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(244,237,227,.5);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 4; display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    }
+    .hero-scroll span {
+      font-family: 'DM Mono', monospace; font-size: .48rem;
+      letter-spacing: .22em; color: rgba(244,237,227,.28); text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 38px;
+      background: linear-gradient(to bottom, rgba(201,160,96,.5), transparent);
+      animation: spulse 2.2s ease-in-out infinite;
+    }
+    @keyframes spulse { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+
+    /* ── MARQUEE ── */
+    .marquee-band {
+      background: var(--teal); padding: .82rem 0; overflow: hidden; white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: mscroll 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(11,28,23,.78); padding: 0 2rem;
+    }
+
+    /* ── SHARED ── */
+    section { padding: clamp(5rem,11vw,9rem) clamp(1.5rem,5vw,4rem); }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .58rem; letter-spacing: .26em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif; font-weight: 300;
+      font-size: clamp(2.2rem,5vw,4rem); line-height: 1.1;
+      color: var(--cream);
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .rv { transition: opacity .75s ease, transform .75s ease; }
+    .js-loaded .rv { opacity: 0; transform: translateY(28px); }
+    .js-loaded .rv.visible { opacity: 1; transform: none; }
+
+    /* ── ABOUT ── */
+    .about-section {
+      background: var(--forest2);
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,6vw,6rem);
+      align-items: center;
+    }
+    @media (max-width: 800px) { .about-section { grid-template-columns: 1fr; } }
+    .about-portrait-wrap {
+      position: relative; aspect-ratio: 4/5; overflow: hidden;
+    }
+    .about-portrait-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .about-portrait-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(18,34,24,.55) 0%, transparent 60%);
+    }
+    .about-portrait-badge {
+      position: absolute; bottom: 1.6rem; left: 1.6rem;
+      padding: .5rem 1rem;
+      background: rgba(43,110,90,.25); backdrop-filter: blur(8px);
+      border: 1px solid rgba(201,160,96,.22);
+      font-family: 'DM Mono', monospace; font-size: .52rem;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
+    }
+    .about-text { display: flex; flex-direction: column; gap: 1.6rem; }
+    .about-blockquote {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(1.15rem,2vw,1.5rem); line-height: 1.6;
+      color: var(--cream); border-left: 2px solid var(--gold);
+      padding-left: 1.4rem; margin-bottom: .4rem;
+    }
+    .about-body {
+      font-size: clamp(.9rem,1.3vw,1rem); line-height: 1.85;
+      color: rgba(244,237,227,.68); font-weight: 300;
+    }
+    .about-body + .about-body { margin-top: -.4rem; }
+    .creds-list { display: flex; flex-direction: column; gap: .7rem; margin-top: .6rem; }
+    .cred-item {
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: .75rem 1rem;
+      background: rgba(201,160,96,.05);
+      border: 1px solid var(--border);
+    }
+    .cred-icon { color: var(--gold); font-size: .75rem; flex-shrink: 0; margin-top: .1rem; }
+    .cred-text {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      letter-spacing: .1em; line-height: 1.5;
+      color: rgba(244,237,227,.6);
+    }
+
+    /* ── WHAT IS REIKI ── */
+    .reiki-section {
+      background: var(--forest);
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,6vw,6rem);
+      align-items: start;
+    }
+    @media (max-width: 800px) { .reiki-section { grid-template-columns: 1fr; } }
+    .reiki-title {
+      font-family: 'Fraunces', serif; font-weight: 300;
+      font-size: clamp(2rem,4.5vw,3.5rem); line-height: 1.1;
+    }
+    .reiki-title em { font-style: italic; color: var(--sage); }
+    .reiki-body {
+      font-size: clamp(.9rem,1.3vw,1rem); line-height: 1.85;
+      color: rgba(244,237,227,.68);
+    }
+    .reiki-helps { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+    .reiki-helps-title {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .helps-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .5rem;
+    }
+    .helps-item {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .65rem .8rem; border: 1px solid var(--border);
+      background: rgba(122,170,142,.05);
+    }
+    .helps-item::before {
+      content: '✦'; color: var(--sage); font-size: .55rem; flex-shrink: 0;
+    }
+    .helps-item span {
+      font-size: .8rem; color: rgba(244,237,227,.65); letter-spacing: .04em;
+    }
+    .reiki-cta { margin-top: 2.5rem; }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--forest2); }
+    .services-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: clamp(2.5rem,5vw,4rem); flex-wrap: wrap; gap: 1.5rem;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    }
+    @media (max-width: 960px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .svc-card {
+      position: relative; overflow: hidden;
+      background-size: cover; background-position: center;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      min-height: 280px; cursor: default;
+      transition: transform .4s ease;
+    }
+    .svc-card:hover { transform: translateY(-3px); }
+    .svc-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,28,23,.92) 0%, rgba(11,28,23,.55) 60%, rgba(11,28,23,.2) 100%);
+      transition: background .3s;
+    }
+    .svc-card:hover .svc-overlay { background: linear-gradient(to top, rgba(11,28,23,.88) 0%, rgba(11,28,23,.45) 60%, rgba(11,28,23,.15) 100%); }
+    .svc-body { position: relative; z-index: 1; padding: 1.6rem 1.4rem; }
+    .svc-num {
+      font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .22em;
+      color: var(--gold); margin-bottom: .5rem;
+    }
+    .svc-name {
+      font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+      font-size: clamp(1.15rem,2vw,1.4rem); color: var(--cream); line-height: 1.25;
+      margin-bottom: .5rem;
+    }
+    .svc-duration {
+      font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: .65rem;
+    }
+    .svc-desc {
+      font-size: .82rem; line-height: 1.65; color: rgba(244,237,227,.6); font-weight: 300;
+    }
+
+    /* ── PACKAGES ── */
+    .packages-section { background: var(--forest); }
+    .pkg-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 800px) { .pkg-grid { grid-template-columns: 1fr; } }
+    .pkg-card {
+      border: 1px solid var(--border);
+      padding: 2rem 1.6rem;
+      background: rgba(201,160,96,.04);
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color .3s;
+    }
+    .pkg-card:hover { border-color: rgba(201,160,96,.35); }
+    .pkg-sessions {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: 3rem; color: var(--gold); line-height: 1;
+    }
+    .pkg-label {
+      font-family: 'DM Mono', monospace; font-size: .56rem; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--sage);
+    }
+    .pkg-save {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: 1.5rem; color: var(--cream);
+    }
+    .pkg-valid {
+      font-family: 'DM Mono', monospace; font-size: .52rem; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(244,237,227,.35);
+    }
+    .pkg-loyalty {
+      grid-column: 1 / -1;
+      border: 1px solid rgba(122,170,142,.2); padding: 1.4rem 1.6rem;
+      background: rgba(122,170,142,.04);
+      display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+    }
+    @media (max-width: 800px) { .pkg-loyalty { grid-column: 1; } }
+    .pkg-loyalty-icon { color: var(--sage); font-size: 1.2rem; flex-shrink: 0; }
+    .pkg-loyalty-text {
+      font-size: .88rem; color: rgba(244,237,227,.65); line-height: 1.6;
+    }
+    .pkg-loyalty-text strong { color: var(--sage); font-weight: 400; }
+
+    /* ── AVAILABILITY ── */
+    .avail-section {
+      background: var(--forest2);
+    }
+    .avail-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 680px) { .avail-grid { grid-template-columns: 1fr; } }
+    .avail-block-title {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gold);
+      padding-bottom: .8rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem;
+    }
+    .avail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .65rem 0; border-bottom: 1px solid rgba(201,160,96,.07);
+    }
+    .avail-day {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(244,237,227,.5);
+    }
+    .avail-time {
+      font-size: .85rem; color: rgba(244,237,227,.72);
+    }
+    .avail-notice {
+      margin-top: 1.4rem; padding: .8rem 1rem;
+      background: rgba(122,170,142,.06); border: 1px solid rgba(122,170,142,.15);
+      font-family: 'DM Mono', monospace; font-size: .56rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--sage);
+    }
+    .avail-location {
+      margin-top: 2.5rem; padding: 1.4rem 1.6rem;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: .6rem;
+    }
+    .avail-location-label {
+      font-family: 'DM Mono', monospace; font-size: .55rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .avail-location-addr {
+      font-size: .9rem; color: rgba(244,237,227,.65); line-height: 1.6;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--forest); }
+    .testi-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 680px) { .testi-grid { grid-template-columns: 1fr; } }
+    .testi-card {
+      border: 1px solid var(--border); padding: 2rem;
+      background: rgba(201,160,96,.03);
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .testi-mark {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: 3.5rem; line-height: .7; color: rgba(201,160,96,.25);
+    }
+    .testi-quote {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(1rem,1.8vw,1.2rem); line-height: 1.7; color: var(--cream);
+    }
+    .testi-attr {
+      font-family: 'DM Mono', monospace; font-size: .54rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--sage);
+    }
+
+    /* ── EMAIL SIGNUP ── */
+    .signup-section {
+      background: var(--teal);
+      padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 2rem;
+    }
+    .signup-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .26em;
+      text-transform: uppercase; color: rgba(11,28,23,.65);
+    }
+    .signup-title {
+      font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+      font-size: clamp(2rem,5vw,3.5rem); color: rgba(11,28,23,.9); line-height: 1.1;
+    }
+    .signup-sub {
+      font-size: .95rem; color: rgba(11,28,23,.65); max-width: 480px; line-height: 1.7;
+    }
+    .signup-discount {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(11,28,23,.5);
+    }
+    .signup-form {
+      display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center;
+      width: 100%; max-width: 500px;
+    }
+    .signup-form input {
+      flex: 1; min-width: 220px;
+      background: rgba(11,28,23,.1); border: 1px solid rgba(11,28,23,.25);
+      color: rgba(11,28,23,.9); padding: .88rem 1.2rem;
+      font-family: 'DM Sans', sans-serif; font-size: .88rem;
+      outline: none;
+    }
+    .signup-form input::placeholder { color: rgba(11,28,23,.45); }
+    .signup-form input:focus { border-color: rgba(11,28,23,.55); }
+    .signup-btn {
+      background: rgba(11,28,23,.85); color: var(--cream);
+      border: none; padding: .88rem 1.8rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: .66rem; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      white-space: nowrap; flex-shrink: 0; min-height: 44px;
+      transition: background .3s;
+    }
+    .signup-btn:hover { background: rgba(11,28,23,1); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--forest2);
+      padding: clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 1.8rem;
+    }
+    .cta-band-title {
+      font-family: 'Fraunces', serif; font-weight: 300;
+      font-size: clamp(2rem,5vw,4rem); line-height: 1.1;
+    }
+    .cta-band-title em { font-style: italic; color: var(--gold); }
+    .cta-band-sub {
+      font-size: clamp(.88rem,1.3vw,1rem); color: rgba(244,237,227,.55);
+      max-width: 520px; line-height: 1.75;
+    }
+    .cta-band-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(6,12,10,.95);
+      border-radius: 3rem 3rem 0 0;
+      padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem) 2rem;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 720px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-brand-name {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: 1.6rem; color: var(--cream); margin-bottom: .4rem;
+    }
+    .footer-tagline {
+      font-family: 'DM Mono', monospace; font-size: .54rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); opacity: .7; margin-bottom: 1rem;
+    }
+    .footer-contact {
+      font-size: .84rem; color: rgba(244,237,227,.5); line-height: 1.9;
+    }
+    .footer-contact a { color: rgba(244,237,227,.5); text-decoration: none; transition: color .3s; }
+    .footer-contact a:hover { color: var(--gold); }
+    .footer-col-title {
+      font-family: 'DM Mono', monospace; font-size: .54rem; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex; flex-direction: column; gap: .55rem; list-style: none;
+    }
+    .footer-links a {
+      font-size: .84rem; color: rgba(244,237,227,.45); text-decoration: none;
+      transition: color .3s; min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .footer-links a:hover { color: var(--cream); }
+    .footer-bottom {
+      border-top: 1px solid rgba(201,160,96,.08);
+      padding-top: 1.4rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(244,237,227,.25);
+    }
+    .footer-iarp {
+      font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(122,170,142,.45);
+    }
+
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-left" aria-label="Tashi Reiki home">
+      <span class="nav-logo">Tashi Reiki</span>
+      <span class="nav-tag">East Boston · MA</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#availability">Availability</a></li>
+      </ul>
+      <a href="https://squareup.com" class="nav-cta" target="_blank" rel="noopener">Book a Session</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#packages" class="mobile-link">Packages</a>
+    <a href="#availability" class="mobile-link">Availability</a>
+    <a href="https://squareup.com" target="_blank" rel="noopener" class="mobile-link">Book a Session</a>
+  </div>
+
+  <main id="main-content" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg">
+        <img
+          src="033917a6-8b9b-4c17-a2b8-174ddbd5fa5d-img_3542_jpg.jpg"
+          alt="Natasha Weiss, Reiki practitioner at Tashi Reiki"
+          id="heroImg"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-overlay-bottom" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow rv">Reiki · Sound Healing · East Boston, MA</p>
+        <h1 class="hero-name rv">
+          Return to<br><em>alignment.</em>
+        </h1>
+        <p class="hero-meaning rv">Tashi · Auspicious &nbsp;✦&nbsp; Rei · Universal &nbsp;✦&nbsp; Ki · Life Force Energy</p>
+        <p class="hero-desc rv">A gentle energy healing practice rooted in presence — helping you release what no longer serves and restore the body's natural rhythm.</p>
+        <div class="hero-ctas rv">
+          <a href="https://squareup.com" class="btn-primary" target="_blank" rel="noopener">Book a Session</a>
+          <a href="#services" class="btn-ghost">Explore Offerings</a>
+        </div>
+        <div class="hero-creds rv">
+          <div class="hero-cred"><div class="hero-cred-dot"></div><span>Usui Shiki Ryoho · 2nd Degree</span></div>
+          <div class="hero-cred"><div class="hero-cred-dot"></div><span>IARP® Member</span></div>
+          <div class="hero-cred"><div class="hero-cred-dot"></div><span>Sleep Technologist</span></div>
+          <div class="hero-cred"><div class="hero-cred-dot"></div><span>Reiki Crystal Certified</span></div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Reiki Reset</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Chakra Balancing</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Sound Healing</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Distance Reiki</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Aromatherapy</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Tuning Forks</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Pet Reiki</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Group Sessions</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Pendulum Work</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">East Boston Studio</span>
+        <span class="marquee-item">✦</span>
+        <!-- repeat -->
+        <span class="marquee-item">Reiki Reset</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Chakra Balancing</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Sound Healing</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Distance Reiki</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Aromatherapy</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Tuning Forks</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Pet Reiki</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Group Sessions</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">Pendulum Work</span>
+        <span class="marquee-item">✦</span>
+        <span class="marquee-item">East Boston Studio</span>
+        <span class="marquee-item">✦</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about" aria-labelledby="about-heading">
+      <div class="about-portrait-wrap rv">
+        <img
+          src="369249502_203238579415153_3769280361674569328_n.jpg"
+          alt="Natasha Weiss — founder of Tashi Reiki"
+          loading="lazy"
+        >
+        <div class="about-portrait-overlay" aria-hidden="true"></div>
+        <div class="about-portrait-badge">Tashi Reiki · Founded Oct 2025</div>
+      </div>
+      <div class="about-text">
+        <p class="eyebrow rv">Meet Natasha</p>
+        <h2 class="section-title rv" id="about-heading">
+          Practitioner,<br><em>healer,</em> guide.
+        </h2>
+        <blockquote class="about-blockquote rv">
+          "My mission is to share the restorative benefits of Reiki and help you feel more empowered, grounded, and aligned — one session at a time."
+        </blockquote>
+        <p class="about-body rv">
+          Natasha Weiss is a certified Reiki practitioner, Reiki Crystal Healing specialist, and sleep technologist with nearly a decade of experience in sleep medicine. She founded Tashi Reiki in October 2025 in East Boston as a dedicated mindfulness and relaxation space.
+        </p>
+        <p class="about-body rv">
+          Trained through The John Harvey Gray Center for Reiki Healing under teacher Lourdes Gray, Natasha holds both 1st and 2nd Degree certification in Usui Shiki Ryoho Reiki, and is an active member of the International Association of Reiki Professionals (IARP®).
+        </p>
+        <div class="creds-list rv">
+          <div class="cred-item">
+            <span class="cred-icon">✦</span>
+            <span class="cred-text">2nd Degree Training, Usui Shiki Ryoho Reiki — John Harvey Gray Center for Reiki Healing</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-icon">✦</span>
+            <span class="cred-text">Reiki Crystal Healing Certificate</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-icon">✦</span>
+            <span class="cred-text">Member, International Association of Reiki Professionals (IARP®)</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-icon">✦</span>
+            <span class="cred-text">Sleep Technologist · Nearly a decade in sleep medicine</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS REIKI -->
+    <section class="reiki-section" id="reiki" aria-labelledby="reiki-heading">
+      <div>
+        <p class="eyebrow rv">The Practice</p>
+        <h2 class="reiki-title rv" id="reiki-heading">
+          What is<br><em>Reiki?</em>
+        </h2>
+        <div class="reiki-cta rv">
+          <a href="https://squareup.com" class="btn-primary" target="_blank" rel="noopener">Book Your First Session</a>
+        </div>
+      </div>
+      <div class="rv">
+        <p class="reiki-body">
+          Reiki is a gentle energy healing technique that helps calm the nervous system, release energetic blockages, and support the body's natural healing processes. A practitioner channels universal life force energy through light touch or at a distance, guiding the body back into its own rhythm.
+        </p>
+        <div class="reiki-helps">
+          <p class="reiki-helps-title">Sessions often help with</p>
+          <div class="helps-grid">
+            <div class="helps-item"><span>Stress &amp; Burnout</span></div>
+            <div class="helps-item"><span>Emotional Overwhelm</span></div>
+            <div class="helps-item"><span>Sleep Issues</span></div>
+            <div class="helps-item"><span>Energetic Alignment</span></div>
+            <div class="helps-item"><span>Deep Relaxation</span></div>
+            <div class="helps-item"><span>Nervous System Reset</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="services" aria-labelledby="services-heading">
+      <div class="services-header">
+        <div>
+          <p class="eyebrow rv">Offerings</p>
+          <h2 class="section-title rv" id="services-heading">
+            Every session,<br><em>intentional.</em>
+          </h2>
+        </div>
+        <a href="https://squareup.com" class="btn-ghost rv" target="_blank" rel="noopener">View Full Menu →</a>
+      </div>
+      <div class="services-grid">
+
+        <div class="svc-card rv"
+          style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=75')"
+          aria-label="Reiki Reset service">
+          <div class="svc-overlay" aria-hidden="true"></div>
+          <div class="svc-body">
+            <p class="svc-num">01</p>
+            <h3 class="svc-name">Reiki Reset</h3>
+            <p class="svc-duration">30 minutes</p>
+            <p class="svc-desc">Energy clearing and chakra balancing. A focused reset for when you need to return to center quickly.</p>
+          </div>
+        </div>
+
+        <div class="svc-card rv"
+          style="background-image:url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=75')"
+          aria-label="Reiki Session service">
+          <div class="svc-overlay" aria-hidden="true"></div>
+          <div class="svc-body">
+            <p class="svc-num">02</p>
+            <h3 class="svc-name">Reiki Session</h3>
+            <p class="svc-duration">45 or 60 minutes</p>
+            <p class="svc-desc">Personalized relaxation with optional sound and crystals woven into your unique healing journey.</p>
+          </div>
+        </div>
+
+        <div class="svc-card rv"
+          style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=75')"
+          aria-label="Reiki Plus service">
+          <div class="svc-overlay" aria-hidden="true"></div>
+          <div class="svc-body">
+            <p class="svc-num">03</p>
+            <h3 class="svc-name">Reiki Plus</h3>
+            <p class="svc-duration">90 minutes</p>
+            <p class="svc-desc">Enhanced session with chakra balancing, tuning forks, and aromatherapy for a deeper immersive experience.</p>
+          </div>
+        </div>
+
+        <div class="svc-card rv"
+          style="background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=75')"
+          aria-label="Reiki Ultimate service">
+          <div class="svc-overlay" aria-hidden="true"></div>
+          <div class="svc-body">
+            <p class="svc-num">04</p>
+            <h3 class="svc-name">Reiki Ultimate</h3>
+            <p class="svc-duration">120 minutes</p>
+            <p class="svc-desc">Immersive 2-hour healing ceremony with sound ritual, deep energetic clearing, and full-body restoration.</p>
+          </div>
+        </div>
+
+        <div class="svc-card rv"
+          style="background-image:url('https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=75')"
+          aria-label="Distance Reiki service">
+          <div class="svc-overlay" aria-hidden="true"></div>
+          <div class="svc-body">
+            <p class="svc-num">05</p>
+            <h3 class="svc-name">Distance Reiki</h3>
+            <p class="svc-duration">30, 45, or 60 minutes</p>
+            <p class="svc-desc">Remote energy healing delivered wherever you are. Healing has no boundary.</p>
+          </div>
+        </div>
+
+        <div class="svc-card rv"
+          style="background-image:url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=75')"
+          aria-label="Pet Reiki and Group Sessions">
+          <div class="svc-overlay" aria-hidden="true"></div>
+          <div class="svc-body">
+            <p class="svc-num">06</p>
+            <h3 class="svc-name">Pet Reiki &amp; Events</h3>
+            <p class="svc-duration">30 min / Custom</p>
+            <p class="svc-desc">Distance Reiki for animals, plus private events and group sessions in-studio, at home, or in your office.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="packages-section" id="packages" aria-labelledby="packages-heading">
+      <p class="eyebrow rv">Commit to Your Healing</p>
+      <h2 class="section-title rv" id="packages-heading">
+        Treatment<br><em>packages.</em>
+      </h2>
+      <div class="pkg-grid">
+
+        <div class="pkg-card rv">
+          <div class="pkg-sessions">3</div>
+          <div class="pkg-label">Sessions · Prepaid</div>
+          <div class="pkg-save">Save 10%</div>
+          <div class="pkg-valid">Valid for 3 months</div>
+        </div>
+
+        <div class="pkg-card rv">
+          <div class="pkg-sessions">6</div>
+          <div class="pkg-label">Sessions · Prepaid</div>
+          <div class="pkg-save">Save 15%</div>
+          <div class="pkg-valid">Valid for 6 months</div>
+        </div>
+
+        <div class="pkg-card rv">
+          <div class="pkg-sessions">12</div>
+          <div class="pkg-label">Sessions · Prepaid</div>
+          <div class="pkg-save">Save 25%</div>
+          <div class="pkg-valid">Valid for 12 months</div>
+        </div>
+
+        <div class="pkg-loyalty rv">
+          <span class="pkg-loyalty-icon">✦</span>
+          <p class="pkg-loyalty-text">
+            <strong>Loyalty Reward:</strong> Book 3 consecutive monthly sessions and receive <strong>10% off your 4th visit</strong> — a thank you for committing to consistent care.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AVAILABILITY -->
+    <section class="avail-section" id="availability" aria-labelledby="avail-heading">
+      <p class="eyebrow rv">Schedule</p>
+      <h2 class="section-title rv" id="avail-heading">
+        Hours &amp;<br><em>availability.</em>
+      </h2>
+      <div class="avail-grid">
+
+        <div class="rv">
+          <p class="avail-block-title">In-Person Sessions</p>
+          <div class="avail-row">
+            <span class="avail-day">Wednesday – Thursday</span>
+            <span class="avail-time">2:00 PM – 8:00 PM</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Friday</span>
+            <span class="avail-time">10:00 AM – 4:00 PM</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Saturday</span>
+            <span class="avail-time">10:00 AM – 2:00 PM</span>
+          </div>
+          <div class="avail-notice">1 hour advance notice required for same-day booking</div>
+        </div>
+
+        <div class="rv">
+          <p class="avail-block-title">Distance Sessions</p>
+          <div class="avail-row">
+            <span class="avail-day">Tuesday</span>
+            <span class="avail-time">4:00 PM – 8:00 PM</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Wednesday – Thursday</span>
+            <span class="avail-time">10:00 AM – 8:00 PM</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Friday</span>
+            <span class="avail-time">10:00 AM – 4:00 PM</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-day">Saturday</span>
+            <span class="avail-time">10:00 AM – 2:00 PM</span>
+          </div>
+          <div class="avail-notice">Distance sessions available from anywhere</div>
+        </div>
+
+      </div>
+
+      <div class="avail-location rv">
+        <p class="avail-location-label">Studio Location</p>
+        <p class="avail-location-addr">
+          1140 Saratoga Street · East Boston / Winthrop, MA 02128<br>
+          Parking available · &lt;10 min walk from Orient Heights Blue Line T Station
+        </p>
+        <a href="https://squareup.com" class="btn-primary" style="margin-top:.4rem; align-self:flex-start;" target="_blank" rel="noopener">Book a Session</a>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" id="testimonials" aria-labelledby="testi-heading">
+      <p class="eyebrow rv">Kind Words</p>
+      <h2 class="section-title rv" id="testi-heading">
+        What clients<br><em>experience.</em>
+      </h2>
+      <div class="testi-grid">
+
+        <div class="testi-card rv">
+          <div class="testi-mark" aria-hidden="true">"</div>
+          <blockquote class="testi-quote">
+            "Tashi gave me a 15 minute reiki session. She was amazing and gave excellent care to problem areas with professional excellence and convenient mobile appointments."
+          </blockquote>
+          <p class="testi-attr">— E.S. · April 2025</p>
+        </div>
+
+        <div class="testi-card rv">
+          <div class="testi-mark" aria-hidden="true">"</div>
+          <blockquote class="testi-quote">
+            "Fantastic practitioner with a calming presence and healing nature."
+          </blockquote>
+          <p class="testi-attr">— S.H. · March 2026</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EMAIL SIGNUP -->
+    <section class="signup-section" id="signup" aria-labelledby="signup-heading">
+      <p class="signup-eyebrow rv">Join the Community</p>
+      <h2 class="signup-title rv" id="signup-heading">Welcome 20% off your first session.</h2>
+      <p class="signup-sub rv">Sign up for the Tashi Reiki community newsletter and receive a 20% discount code for your first booking.</p>
+      <form class="signup-form rv" id="signupForm" action="https://docs.google.com/forms/d/e/tashireiki" method="GET" target="_blank">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="signup-btn">Claim My Discount</button>
+      </form>
+      <p class="signup-discount rv">No spam · Unsubscribe anytime · Healing updates only</p>
+    </section>
+
+    <!-- CTA BAND -->
+    <div class="cta-band" aria-labelledby="cta-heading">
+      <p class="eyebrow rv">Begin Your Healing</p>
+      <h2 class="cta-band-title rv" id="cta-heading">
+        Your body knows<br>how to <em>heal.</em>
+      </h2>
+      <p class="cta-band-sub rv">A complimentary 15-minute consultation is available in-person, by phone, or virtually — no commitment required.</p>
+      <div class="cta-band-btns rv">
+        <a href="https://squareup.com" class="btn-primary" target="_blank" rel="noopener">Book a Session</a>
+        <a href="mailto:tashireikihealing@gmail.com" class="btn-ghost">Free Consultation</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand-name">Tashi Reiki</p>
+        <p class="footer-tagline">Mindfulness &amp; Relaxation · East Boston, MA</p>
+        <div class="footer-contact">
+          <a href="mailto:tashireikihealing@gmail.com">tashireikihealing@gmail.com</a><br>
+          <a href="tel:+17164021288">(716) 402-1288</a><br>
+          1140 Saratoga Street<br>
+          East Boston, MA 02128
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#about">About Natasha</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#availability">Availability</a></li>
+          <li><a href="#signup">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Connect</p>
+        <ul class="footer-links">
+          <li><a href="https://instagram.com/tashireikiboston" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://facebook.com/p/Tashi-Reiki-61575960721149/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://youtube.com/@tashireiki" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://open.spotify.com/playlist/2jdmEMU3WzAmZjRKWKXZSw" target="_blank" rel="noopener">Spotify Playlist</a></li>
+          <li><a href="https://linktr.ee/tashireiki" target="_blank" rel="noopener">Linktree</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Tashi Reiki · Natasha Weiss · All rights reserved</p>
+      <p class="footer-iarp">IARP® Member · Usui Shiki Ryoho · 2nd Degree Certified</p>
+    </div>
+  </footer>
+
+  <!-- A11Y TOGGLE -->
+  <button class="a11y-btn" id="a11yBtn" aria-label="Toggle accessibility mode" aria-pressed="false">⊙</button>
+
+  <script>
+    document.body.classList.add('js-loaded');
+
+    // Custom cursor
+    if (!window.matchMedia('(hover: none)').matches) {
+      const cur = document.querySelector('.cursor');
+      const ring = document.querySelector('.cursor-ring');
+      let rx = 0, ry = 0, cx = 0, cy = 0;
+      document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+      (function animCursor() {
+        rx += (cx - rx) * 0.12;
+        ry += (cy - ry) * 0.12;
+        if (cur) cur.style.cssText = `left:${cx}px;top:${cy}px`;
+        if (ring) ring.style.cssText = `left:${rx}px;top:${ry}px`;
+        requestAnimationFrame(animCursor);
+      })();
+    }
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hero parallax
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg) {
+      const onLoad = () => requestAnimationFrame(() => heroImg.classList.add('loaded'));
+      heroImg.addEventListener('load', onLoad);
+      if (heroImg.complete) onLoad();
+      window.addEventListener('scroll', () => {
+        const offset = Math.min(window.scrollY * 0.04, window.innerHeight * 0.055);
+        heroImg.style.transform = `scale(1.06) translateY(-${offset}px) translateZ(0)`;
+      }, { passive: true });
+    }
+
+    // Mobile menu
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // A11Y toggle
+    const a11yBtn = document.getElementById('a11yBtn');
+    let a11y = localStorage.getItem('tashi_a11y') === '1';
+    if (a11y) { document.body.classList.add('a11y-on'); a11yBtn.setAttribute('aria-pressed', 'true'); }
+    a11yBtn.addEventListener('click', () => {
+      a11y = !a11y;
+      document.body.classList.toggle('a11y-on', a11y);
+      localStorage.setItem('tashi_a11y', a11y ? '1' : '0');
+      a11yBtn.setAttribute('aria-pressed', a11y);
+    });
+  </script>
+</body>
+</html>
