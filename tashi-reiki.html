@@ -386,15 +386,22 @@
       font-family: 'DM Mono', monospace; font-size: .52rem;
       letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
     }
-.about-cert {
-      position: absolute; bottom: 1.6rem; right: 1.2rem;
-      width: clamp(110px, 28%, 160px);
-      border-radius: 4px; overflow: hidden;
+    .about-portrait-outer { position: relative; }
+    .about-cert {
+      position: absolute; bottom: -1.4rem; right: -1rem;
+      width: clamp(120px, 30%, 165px);
+      background: var(--ink);
       border: 1px solid rgba(201,160,96,.45);
-      box-shadow: 0 4px 20px rgba(0,0,0,.55);
-      z-index: 2;
+      box-shadow: 0 6px 24px rgba(0,0,0,.65);
+      z-index: 10;
     }
     .about-cert img { width: 100%; display: block; }
+    .about-cert-label {
+      padding: .45rem .6rem;
+      font-family: 'DM Mono', monospace; font-size: .48rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); text-align: center;
+    }
     .about-text { display: flex; flex-direction: column; gap: 1.6rem; }
     .about-blockquote {
       font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
@@ -876,20 +883,23 @@
 
     <!-- ABOUT -->
     <section class="about-section" id="about" aria-labelledby="about-heading">
-      <div class="about-portrait-wrap rv">
-        <img
-          src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/58ee39b1-bce0-43ac-b091-f962090933e3-20241020_155?asset_id=4647d611-52b3-467b-91d6-cbc4f88a50a8&img_etag=%22c52e5bb7ce6f4b80b3129a05d92c0054%22&image_assets=false&size=1024"
-          alt="Natasha Weiss — founder of Tashi Reiki"
-          loading="lazy"
-        >
-        <div class="about-portrait-overlay" aria-hidden="true"></div>
-        <div class="about-portrait-badge">Tashi Reiki · Founded Oct 2025</div>
+      <div class="about-portrait-outer rv">
+        <div class="about-portrait-wrap">
+          <img
+            src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/58ee39b1-bce0-43ac-b091-f962090933e3-20241020_155?asset_id=4647d611-52b3-467b-91d6-cbc4f88a50a8&img_etag=%22c52e5bb7ce6f4b80b3129a05d92c0054%22&image_assets=false&size=1024"
+            alt="Natasha Weiss — founder of Tashi Reiki"
+            loading="lazy"
+          >
+          <div class="about-portrait-overlay" aria-hidden="true"></div>
+          <div class="about-portrait-badge">Tashi Reiki · Founded Oct 2025</div>
+        </div>
         <div class="about-cert">
           <img
             src="https://new.express.adobe.com/webpage/61dzTRBVJFhgb/resources/62cbce73-cdda-4952-bb7b-944dba948f19-reiki2certif?asset_id=f730d7d5-1b63-46d9-8a4d-b8bc2b8558d9&img_etag=%22e882b9aae2414493a47092094c053898%22&image_assets=false&size=2560"
             alt="Reiki Level 2 Certification"
             loading="lazy"
           >
+          <div class="about-cert-label">Reiki Level II</div>
         </div>
       </div>
       <div class="about-text">
