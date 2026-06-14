@@ -246,10 +246,21 @@
     /* Not needed with this approach */
     .hero-gradient-overlay { display: none; }
     @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        position: relative;
+      }
+      .hero-right {
+        position: absolute; inset: 0;
+        z-index: 0; min-height: unset;
+      }
       .hero-left {
-        background: var(--forest);
+        position: relative; z-index: 1;
+        background: linear-gradient(to right,
+          rgba(7,26,22,0.88) 0%,
+          rgba(7,26,22,0.75) 60%,
+          rgba(7,26,22,0.55) 100%
+        );
         min-height: 100dvh;
       }
     }
